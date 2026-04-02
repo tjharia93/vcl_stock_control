@@ -1,0 +1,8 @@
+stock_category_name,is_item_linked,is_manual_only,is_active,notes
+Ink,1,0,1,Printing inks - linked to ERP Item
+Chemical,1,0,1,Chemicals - linked to ERP Item
+Raw Material,0,1,1,Paper / board / reels / FBB / duplex / bond
+Finished Goods,0,1,1,Finished stock - books / exercise books / pads
+Core,0,1,1,Paper cores
+Spare,0,1,1,Bearings and spare parts
+Fuel,0,1,1,Diesel / petrol / fuel stock

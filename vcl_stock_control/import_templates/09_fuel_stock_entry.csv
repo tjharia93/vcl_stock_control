@@ -1,0 +1,4 @@
+posting_date,location,remarks,~items:fuel_point,~items:material_profile,~items:manual_description,~items:entry_uom,~items:entry_qty,~items:conversion_factor,~items:notes
+2026-04-01,Factory,,Fuel Tank,SMP-2026-00011,Fuel Tank Diesel,Litre,2500,1,Main diesel storage
+2026-04-01,Factory,,Generator,SMP-2026-00012,Generator Diesel,Litre,180,1,Generator tank level
+2026-04-01,Factory,,Vimal Bahati,,Vimal Bahati Diesel,Litre,400,1,Manual entry

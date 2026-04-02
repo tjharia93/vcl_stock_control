@@ -1,0 +1,7 @@
+posting_date,location,department,remarks,~items:material_profile,~items:part_no,~items:manual_description,~items:entry_uom,~items:entry_qty,~items:conversion_factor,~items:minimum_level,~items:notes
+2026-04-01,Spare Store,Maintenance,,SMP-2026-00008,6201,Bearing 6201,Nos,12,1,5,Ball bearing
+2026-04-01,Spare Store,Maintenance,,SMP-2026-00009,6205,Bearing 6205,Nos,8,1,3,Ball bearing
+2026-04-01,Spare Store,Maintenance,,SMP-2026-00010,6308,Bearing 6308,Nos,4,1,2,Ball bearing
+2026-04-01,Spare Store,Maintenance,,,22205,Bearing 22205,Nos,2,1,2,Manual entry - no profile
+2026-04-01,Spare Store,Maintenance,,,V-Belt-A68,V-Belt A68,Nos,6,1,3,Drive belt
+2026-04-01,Spare Store,Maintenance,,,Blade-Cutter-12,Cutter Blade 12 inch,Nos,10,1,4,Guillotine blade

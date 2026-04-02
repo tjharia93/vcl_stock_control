@@ -1,0 +1,16 @@
+material_profile_name,material_profile_code,stock_category,default_uom,colour,gsm,size_text,width_mm,length_mm,country,mill,part_no,minimum_level,notes
+250mm NCR CFB Pink 50gsm China,,Raw Material,Kg,Pink,50,250mm,250,,China,,,,"NCR carbonless paper reel"
+Duplex Board 91.4x122 230gsm,,Raw Material,Kg,,230,"91.4x122",914,1220,,,,,"Duplex board sheet"
+FBB 70x100 250gsm,,Raw Material,Kg,,250,"70x100",700,1000,,,,,"Folding box board"
+Chipboard 61x86 350gsm,,Raw Material,Kg,,350,"61x86",610,860,,,,,"Chipboard sheet"
+Bond Paper A4 80gsm,,Raw Material,Ream,,80,A4,210,297,,,,,"Office bond paper"
+13x79 Core,,Core,Nos,,,13x79,,,,,,,Core for paper reels
+10x60 Core,,Core,Nos,,,10x60,,,,,,,Core for smaller reels
+Bearing 6201,,Spare,Nos,,,,,,,,6201,5,"Ball bearing"
+Bearing 6205,,Spare,Nos,,,,,,,,6205,3,"Ball bearing"
+Bearing 6308,,Spare,Nos,,,,,,,,6308,2,"Ball bearing"
+Fuel Tank Diesel,,Fuel,Litre,,,,,,,,,,Main diesel tank
+Generator Diesel,,Fuel,Litre,,,,,,,,,,Generator fuel
+A5 SL BP 200pg,,Finished Goods,Pcs,,,A5,,,,,,,A5 single line exercise book
+A4 SQ BP 100pg,,Finished Goods,Pcs,,,A4,,,,,,,A4 square ruled book
+A5 RL BP 96pg,,Finished Goods,Pcs,,,A5,,,,,,,A5 ruled exercise book

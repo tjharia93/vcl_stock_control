@@ -1,0 +1,6 @@
+posting_date,warehouse_text,location,remarks,~items:material_profile,~items:manual_description,~items:colour,~items:gsm,~items:width_mm,~items:length_mm,~items:size_text,~items:country,~items:mill,~items:entry_uom,~items:entry_qty,~items:conversion_factor,~items:secondary_qty,~items:secondary_uom,~items:notes
+2026-04-01,Go Down 1,Factory,,SMP-2026-00001,250mm NCR CFB Pink 50gsm China,Pink,50,250,,250mm,China,,Kg,500,1,,,,Reel stock
+2026-04-01,Go Down 1,Factory,,SMP-2026-00002,Duplex Board 91.4x122 230gsm,,230,914,1220,91.4x122,,,Kg,1200,1,500,Sheet,,Sheet stock
+2026-04-01,Go Down 2,Factory,,,Chipboard 61x86 300gsm,,300,610,860,61x86,,,Kg,800,1,,,,Manual entry - no profile yet
+2026-04-01,Go Down 1,Factory,,SMP-2026-00003,FBB 70x100 250gsm,,250,700,1000,70x100,,,Kg,600,1,,,,FBB stock
+2026-04-01,Go Down 2,Factory,,SMP-2026-00005,Bond Paper A4 80gsm,,80,210,297,A4,,,Ream,200,500,,,,"200 reams = 100,000 sheets"

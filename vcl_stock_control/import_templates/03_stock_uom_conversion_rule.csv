@@ -1,0 +1,9 @@
+conversion_for,item,material_profile,stock_category,from_uom,to_uom,conversion_factor,is_active,notes
+Stock Category,,,,Bundle,Pcs,25,1,Standard bundle = 25 pcs
+Stock Category,,,,Carton,Pcs,204,1,Standard carton = 204 pcs
+Stock Category,,,,Pallet,Ream,45,1,Pallet = 45 reams
+Stock Category,,,,Drum,Kg,20,1,Standard drum = 20 Kg
+Stock Category,,,,Litre,mL,1000,1,1 litre = 1000 mL
+Stock Category,,,,Ream,Sheet,500,1,1 ream = 500 sheets
+Stock Category,,,,Dozen,Nos,12,1,1 dozen = 12 nos
+Stock Category,,,,Gross,Nos,144,1,1 gross = 144 nos

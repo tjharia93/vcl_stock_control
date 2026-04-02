@@ -1,0 +1,5 @@
+posting_date,location,remarks,~items:material_profile,~items:manual_description,~items:size_text,~items:entry_uom,~items:entry_qty,~items:conversion_factor,~items:status_note,~items:notes
+2026-04-01,Core Store,,SMP-2026-00006,13x79 Core,13x79,Nos,150,1,Good,
+2026-04-01,Core Store,,SMP-2026-00007,10x60 Core,10x60,Nos,80,1,Good,
+2026-04-01,Core Store,,,15x100 Core,15x100,Nos,45,1,Some damaged,Manual entry
+2026-04-01,Core Store,,,8x50 Core,8x50,Nos,200,1,Good,Small cores

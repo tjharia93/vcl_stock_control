@@ -1,0 +1,6 @@
+posting_date,location,remarks,~items:material_profile,~items:manual_description,~items:size_text,~items:pages,~items:ruling_type,~items:print_type,~items:bundle_qty,~items:pieces_per_bundle,~items:carton_qty,~items:pieces_per_carton,~items:entry_uom,~items:entry_qty,~items:conversion_factor,~items:notes
+2026-04-01,FG Store,,SMP-2026-00013,A5 SL BP 200pg,A5,200,Single Line,Plain,40,25,0,0,Pcs,1000,1,40 bundles x 25 pcs
+2026-04-01,FG Store,,SMP-2026-00014,A4 SQ BP 100pg,A4,100,Square,Plain,20,25,0,0,Pcs,500,1,20 bundles x 25 pcs
+2026-04-01,FG Store,,SMP-2026-00015,A5 RL BP 96pg,A5,96,Ruled,Printed,0,0,5,204,Pcs,1020,1,5 cartons x 204 pcs
+2026-04-01,FG Store,,,Counter Book A4 2Q,A4,96,Ruled,Printed,10,25,0,0,Pcs,250,1,Manual entry
+2026-04-01,FG Store,,,Invoice Book A5 Triplicate,A5,50,Ruled,NCR,0,0,2,100,Pcs,200,1,NCR invoice books

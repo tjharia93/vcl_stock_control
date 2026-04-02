@@ -1,0 +1,6 @@
+posting_date,location,department,remarks,~items:item,~items:stock_category,~items:entry_uom,~items:entry_qty,~items:conversion_factor,~items:supplier,~items:batch_no,~items:expiry_date,~items:notes
+2026-04-01,Main Store,Printing,,INK-001,Ink,Kg,50,1,Supplier A,B2024-01,2027-06-30,Black ink
+2026-04-01,Main Store,Printing,,INK-002,Ink,Kg,25,1,Supplier A,B2024-02,2027-06-30,Cyan ink
+2026-04-01,Main Store,Printing,,INK-003,Ink,Litre,10,0.85,Supplier B,B2024-05,,Varnish
+2026-04-01,Chemical Store,Binding,,CHEM-001,Chemical,Kg,100,1,Supplier C,,,PVA Glue
+2026-04-01,Chemical Store,Binding,,CHEM-002,Chemical,Litre,50,1.02,Supplier C,,,Binding adhesive
