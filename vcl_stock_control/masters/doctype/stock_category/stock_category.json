@@ -1,0 +1,98 @@
+{
+    "actions": [],
+    "autoname": "field:stock_category_name",
+    "creation": "2026-04-02 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "stock_category_name",
+        "is_item_linked",
+        "is_manual_only",
+        "column_break_1",
+        "is_active",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "stock_category_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Stock Category Name",
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "default": "0",
+            "fieldname": "is_item_linked",
+            "fieldtype": "Check",
+            "in_list_view": 1,
+            "label": "Is Item Linked"
+        },
+        {
+            "default": "0",
+            "fieldname": "is_manual_only",
+            "fieldtype": "Check",
+            "in_list_view": 1,
+            "label": "Is Manual Only"
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "1",
+            "fieldname": "is_active",
+            "fieldtype": "Check",
+            "in_list_view": 1,
+            "label": "Is Active"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "links": [],
+    "modified": "2026-04-02 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Masters",
+    "name": "Stock Category",
+    "naming_rule": "By fieldname",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock Manager",
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "Stock User"
+        }
+    ],
+    "quick_entry": 1,
+    "sort_field": "stock_category_name",
+    "sort_order": "ASC",
+    "track_changes": 1
+}

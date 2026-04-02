@@ -1,0 +1,269 @@
+{
+    "actions": [],
+    "autoname": "naming_series:",
+    "creation": "2026-04-02 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "naming_series",
+        "material_profile_name",
+        "material_profile_code",
+        "stock_category",
+        "column_break_basic",
+        "linked_item",
+        "is_active",
+        "section_break_description",
+        "description",
+        "section_break_uom",
+        "default_uom",
+        "base_uom",
+        "column_break_uom2",
+        "pack_uom",
+        "pack_size",
+        "section_break_dimensions",
+        "colour",
+        "gsm",
+        "size_text",
+        "column_break_dim2",
+        "width_mm",
+        "length_mm",
+        "height_mm",
+        "section_break_source",
+        "country",
+        "mill",
+        "column_break_source2",
+        "part_no",
+        "fuel_point_type",
+        "section_break_levels",
+        "minimum_level",
+        "reorder_level",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "naming_series",
+            "fieldtype": "Select",
+            "label": "Naming Series",
+            "options": "SMP-.YYYY.-.#####",
+            "default": "SMP-.YYYY.-.#####",
+            "reqd": 1
+        },
+        {
+            "fieldname": "material_profile_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Material Profile Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "material_profile_code",
+            "fieldtype": "Data",
+            "label": "Material Profile Code"
+        },
+        {
+            "fieldname": "stock_category",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Stock Category",
+            "options": "Stock Category",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_basic",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "linked_item",
+            "fieldtype": "Link",
+            "label": "Linked Item",
+            "options": "Item",
+            "description": "Optional. For future migration to ERP Item."
+        },
+        {
+            "default": "1",
+            "fieldname": "is_active",
+            "fieldtype": "Check",
+            "in_list_view": 1,
+            "label": "Is Active"
+        },
+        {
+            "fieldname": "section_break_description",
+            "fieldtype": "Section Break",
+            "label": "Description"
+        },
+        {
+            "fieldname": "description",
+            "fieldtype": "Small Text",
+            "label": "Description"
+        },
+        {
+            "fieldname": "section_break_uom",
+            "fieldtype": "Section Break",
+            "label": "UOM Details"
+        },
+        {
+            "fieldname": "default_uom",
+            "fieldtype": "Link",
+            "label": "Default UOM",
+            "options": "UOM",
+            "reqd": 1
+        },
+        {
+            "fieldname": "base_uom",
+            "fieldtype": "Link",
+            "label": "Base UOM",
+            "options": "UOM"
+        },
+        {
+            "fieldname": "column_break_uom2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "pack_uom",
+            "fieldtype": "Link",
+            "label": "Pack UOM",
+            "options": "UOM"
+        },
+        {
+            "fieldname": "pack_size",
+            "fieldtype": "Float",
+            "label": "Pack Size"
+        },
+        {
+            "fieldname": "section_break_dimensions",
+            "fieldtype": "Section Break",
+            "label": "Dimensions & Properties",
+            "collapsible": 1
+        },
+        {
+            "fieldname": "colour",
+            "fieldtype": "Data",
+            "label": "Colour"
+        },
+        {
+            "fieldname": "gsm",
+            "fieldtype": "Float",
+            "label": "GSM"
+        },
+        {
+            "fieldname": "size_text",
+            "fieldtype": "Data",
+            "label": "Size Text",
+            "description": "E.g. 13x79, A5 SL BP"
+        },
+        {
+            "fieldname": "column_break_dim2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "width_mm",
+            "fieldtype": "Float",
+            "label": "Width (mm)"
+        },
+        {
+            "fieldname": "length_mm",
+            "fieldtype": "Float",
+            "label": "Length (mm)"
+        },
+        {
+            "fieldname": "height_mm",
+            "fieldtype": "Float",
+            "label": "Height (mm)"
+        },
+        {
+            "fieldname": "section_break_source",
+            "fieldtype": "Section Break",
+            "label": "Source & Part Info",
+            "collapsible": 1
+        },
+        {
+            "fieldname": "country",
+            "fieldtype": "Data",
+            "label": "Country"
+        },
+        {
+            "fieldname": "mill",
+            "fieldtype": "Data",
+            "label": "Mill"
+        },
+        {
+            "fieldname": "column_break_source2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "part_no",
+            "fieldtype": "Data",
+            "label": "Part No"
+        },
+        {
+            "fieldname": "fuel_point_type",
+            "fieldtype": "Data",
+            "label": "Fuel Point Type"
+        },
+        {
+            "fieldname": "section_break_levels",
+            "fieldtype": "Section Break",
+            "label": "Stock Levels",
+            "collapsible": 1
+        },
+        {
+            "fieldname": "minimum_level",
+            "fieldtype": "Float",
+            "label": "Minimum Level"
+        },
+        {
+            "fieldname": "reorder_level",
+            "fieldtype": "Float",
+            "label": "Reorder Level"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "links": [],
+    "modified": "2026-04-02 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Masters",
+    "name": "Stock Material Profile",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock Manager",
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "Stock User"
+        }
+    ],
+    "search_fields": "material_profile_name,stock_category,colour,gsm,size_text",
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "title_field": "material_profile_name",
+    "track_changes": 1
+}

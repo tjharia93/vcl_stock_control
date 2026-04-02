@@ -1,0 +1,111 @@
+{
+    "actions": [],
+    "creation": "2026-04-02 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "material_profile",
+        "manual_description",
+        "size_text",
+        "column_break_1",
+        "default_uom",
+        "entry_uom",
+        "entry_qty",
+        "conversion_factor",
+        "qty_in_default_uom",
+        "column_break_2",
+        "status_note",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "material_profile",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Material Profile",
+            "options": "Stock Material Profile"
+        },
+        {
+            "fieldname": "manual_description",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Manual Description"
+        },
+        {
+            "fieldname": "size_text",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Size Text"
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "default_uom",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Default UOM",
+            "options": "UOM",
+            "reqd": 1
+        },
+        {
+            "fieldname": "entry_uom",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Entry UOM",
+            "options": "UOM",
+            "reqd": 1
+        },
+        {
+            "fieldname": "entry_qty",
+            "fieldtype": "Float",
+            "in_list_view": 1,
+            "label": "Entry Qty",
+            "reqd": 1
+        },
+        {
+            "fieldname": "conversion_factor",
+            "fieldtype": "Float",
+            "label": "Conversion Factor",
+            "default": "1"
+        },
+        {
+            "fieldname": "qty_in_default_uom",
+            "fieldtype": "Float",
+            "in_list_view": 1,
+            "label": "Qty in Default UOM",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "status_note",
+            "fieldtype": "Data",
+            "label": "Status Note"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "istable": 1,
+    "links": [],
+    "modified": "2026-04-02 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Transactions",
+    "name": "Core Stock Entry Line",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "track_changes": 1
+}

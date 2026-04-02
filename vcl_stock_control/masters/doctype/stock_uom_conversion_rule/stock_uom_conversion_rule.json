@@ -1,0 +1,141 @@
+{
+    "actions": [],
+    "autoname": "hash",
+    "creation": "2026-04-02 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "conversion_for",
+        "item",
+        "material_profile",
+        "stock_category",
+        "column_break_1",
+        "from_uom",
+        "to_uom",
+        "conversion_factor",
+        "column_break_2",
+        "is_active",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "conversion_for",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Conversion For",
+            "options": "\nItem\nMaterial Profile\nStock Category",
+            "reqd": 1
+        },
+        {
+            "depends_on": "eval:doc.conversion_for=='Item'",
+            "fieldname": "item",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Item",
+            "mandatory_depends_on": "eval:doc.conversion_for=='Item'",
+            "options": "Item"
+        },
+        {
+            "depends_on": "eval:doc.conversion_for=='Material Profile'",
+            "fieldname": "material_profile",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Material Profile",
+            "mandatory_depends_on": "eval:doc.conversion_for=='Material Profile'",
+            "options": "Stock Material Profile"
+        },
+        {
+            "depends_on": "eval:doc.conversion_for=='Stock Category'",
+            "fieldname": "stock_category",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Stock Category",
+            "mandatory_depends_on": "eval:doc.conversion_for=='Stock Category'",
+            "options": "Stock Category"
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "from_uom",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "From UOM",
+            "options": "UOM",
+            "reqd": 1
+        },
+        {
+            "fieldname": "to_uom",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "To UOM",
+            "options": "UOM",
+            "reqd": 1
+        },
+        {
+            "fieldname": "conversion_factor",
+            "fieldtype": "Float",
+            "in_list_view": 1,
+            "label": "Conversion Factor",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "1",
+            "fieldname": "is_active",
+            "fieldtype": "Check",
+            "label": "Is Active"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "links": [],
+    "modified": "2026-04-02 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Masters",
+    "name": "Stock UOM Conversion Rule",
+    "naming_rule": "Random",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock Manager",
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "Stock User"
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "track_changes": 1
+}

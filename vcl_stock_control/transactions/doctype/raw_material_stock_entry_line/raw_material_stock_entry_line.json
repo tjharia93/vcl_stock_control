@@ -1,0 +1,171 @@
+{
+    "actions": [],
+    "creation": "2026-04-02 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "material_profile",
+        "manual_description",
+        "stock_category",
+        "column_break_1",
+        "colour",
+        "gsm",
+        "width_mm",
+        "length_mm",
+        "size_text",
+        "column_break_2",
+        "country",
+        "mill",
+        "section_break_qty",
+        "default_uom",
+        "entry_uom",
+        "entry_qty",
+        "conversion_factor",
+        "qty_in_default_uom",
+        "column_break_qty2",
+        "secondary_qty",
+        "secondary_uom",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "material_profile",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Material Profile",
+            "options": "Stock Material Profile"
+        },
+        {
+            "fieldname": "manual_description",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Manual Description"
+        },
+        {
+            "fieldname": "stock_category",
+            "fieldtype": "Link",
+            "label": "Stock Category",
+            "options": "Stock Category"
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "colour",
+            "fieldtype": "Data",
+            "label": "Colour"
+        },
+        {
+            "fieldname": "gsm",
+            "fieldtype": "Float",
+            "label": "GSM"
+        },
+        {
+            "fieldname": "width_mm",
+            "fieldtype": "Float",
+            "label": "Width (mm)"
+        },
+        {
+            "fieldname": "length_mm",
+            "fieldtype": "Float",
+            "label": "Length (mm)"
+        },
+        {
+            "fieldname": "size_text",
+            "fieldtype": "Data",
+            "label": "Size Text"
+        },
+        {
+            "fieldname": "column_break_2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "country",
+            "fieldtype": "Data",
+            "label": "Country"
+        },
+        {
+            "fieldname": "mill",
+            "fieldtype": "Data",
+            "label": "Mill"
+        },
+        {
+            "fieldname": "section_break_qty",
+            "fieldtype": "Section Break",
+            "label": "Quantity"
+        },
+        {
+            "fieldname": "default_uom",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Default UOM",
+            "options": "UOM",
+            "reqd": 1
+        },
+        {
+            "fieldname": "entry_uom",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Entry UOM",
+            "options": "UOM",
+            "reqd": 1
+        },
+        {
+            "fieldname": "entry_qty",
+            "fieldtype": "Float",
+            "in_list_view": 1,
+            "label": "Entry Qty",
+            "reqd": 1
+        },
+        {
+            "fieldname": "conversion_factor",
+            "fieldtype": "Float",
+            "label": "Conversion Factor",
+            "default": "1"
+        },
+        {
+            "fieldname": "qty_in_default_uom",
+            "fieldtype": "Float",
+            "in_list_view": 1,
+            "label": "Qty in Default UOM",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_qty2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "secondary_qty",
+            "fieldtype": "Float",
+            "label": "Secondary Qty"
+        },
+        {
+            "fieldname": "secondary_uom",
+            "fieldtype": "Link",
+            "label": "Secondary UOM",
+            "options": "UOM"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "istable": 1,
+    "links": [],
+    "modified": "2026-04-02 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Transactions",
+    "name": "Raw Material Stock Entry Line",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "track_changes": 1
+}

@@ -1,0 +1,5 @@
+[project]
+name = "vcl_stock_control"
+version = "1.0.0"
+description = "VCL Factory Stock Control App"
+requires-python = ">=3.10"
