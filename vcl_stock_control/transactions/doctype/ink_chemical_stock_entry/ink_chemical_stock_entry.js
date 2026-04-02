@@ -16,7 +16,7 @@ frappe.ui.form.on("Ink Chemical Stock Entry Line", {
     },
 
     entry_uom: function(frm, cdt, cdn) {
-        fetch_and_set_factor(frm, cdt, cdn);
+        fetch_and_set_factor(cdt, cdn);
     },
 
     entry_qty: function(frm, cdt, cdn) {
@@ -28,7 +28,7 @@ frappe.ui.form.on("Ink Chemical Stock Entry Line", {
     }
 });
 
-function fetch_and_set_factor(frm, cdt, cdn) {
+function fetch_and_set_factor(cdt, cdn) {
     let row = locals[cdt][cdn];
 
     if (!row.entry_uom || !row.default_uom) return;
@@ -38,21 +38,31 @@ function fetch_and_set_factor(frm, cdt, cdn) {
         return;
     }
 
-    // Use server-side lookup which checks:
-    // 1. Item's built-in UOM Conversion Detail table
-    // 2. Custom Stock UOM Conversion Rule (Item level)
-    // 3. Custom Stock UOM Conversion Rule (Category level)
+    if (!row.item) return;
+
+    // Query ERPNext Item's built-in UOM Conversion Detail table directly
     frappe.call({
-        method: "vcl_stock_control.stock_utils.fetch_conversion_factor",
+        method: "frappe.client.get_list",
         args: {
-            from_uom: row.entry_uom,
-            to_uom: row.default_uom,
-            item: row.item || "",
-            stock_category: row.stock_category || ""
+            doctype: "UOM Conversion Detail",
+            filters: {
+                parent: row.item,
+                parenttype: "Item",
+                uom: row.entry_uom
+            },
+            fields: ["conversion_factor"],
+            limit_page_length: 1
         },
         callback: function(r) {
-            if (r.message) {
-                frappe.model.set_value(cdt, cdn, "conversion_factor", r.message);
+            if (r.message && r.message.length > 0) {
+                let factor = r.message[0].conversion_factor;
+                frappe.model.set_value(cdt, cdn, "conversion_factor", factor);
+            } else {
+                frappe.msgprint({
+                    title: __("No Conversion Found"),
+                    message: __("No UOM conversion found for {0} on Item {1}. Please enter Conversion Factor manually or add the UOM on the Item master.", [row.entry_uom, row.item]),
+                    indicator: "orange"
+                });
             }
         }
     });
