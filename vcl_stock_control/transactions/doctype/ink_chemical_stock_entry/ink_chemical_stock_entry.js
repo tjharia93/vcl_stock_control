@@ -16,60 +16,58 @@ frappe.ui.form.on("Ink Chemical Stock Entry Line", {
     },
 
     entry_uom: function(frm, cdt, cdn) {
-        fetch_and_set_factor(cdt, cdn);
+        let row = locals[cdt][cdn];
+        if (!row.entry_uom || !row.default_uom) return;
+
+        if (row.entry_uom === row.default_uom) {
+            frappe.model.set_value(cdt, cdn, "conversion_factor", 1);
+            frappe.model.set_value(cdt, cdn, "qty_in_default_uom",
+                (row.entry_qty || 0) * 1);
+            return;
+        }
+
+        if (!row.item) return;
+
+        // Fetch the full Item doc to read its uoms child table
+        frappe.call({
+            method: "frappe.client.get",
+            args: {
+                doctype: "Item",
+                name: row.item
+            },
+            callback: function(r) {
+                if (r.message && r.message.uoms) {
+                    let found = false;
+                    for (let uom_row of r.message.uoms) {
+                        if (uom_row.uom === row.entry_uom) {
+                            frappe.model.set_value(cdt, cdn, "conversion_factor", uom_row.conversion_factor);
+                            frappe.model.set_value(cdt, cdn, "qty_in_default_uom",
+                                (row.entry_qty || 0) * uom_row.conversion_factor);
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        frappe.msgprint({
+                            title: "No Conversion Found",
+                            message: "No UOM conversion for " + row.entry_uom + " on Item " + row.item + ". Enter Conversion Factor manually or add the UOM on the Item master.",
+                            indicator: "orange"
+                        });
+                    }
+                }
+            }
+        });
     },
 
     entry_qty: function(frm, cdt, cdn) {
-        calculate_default_qty(cdt, cdn);
+        let row = locals[cdt][cdn];
+        frappe.model.set_value(cdt, cdn, "qty_in_default_uom",
+            (row.entry_qty || 0) * (row.conversion_factor || 1));
     },
 
     conversion_factor: function(frm, cdt, cdn) {
-        calculate_default_qty(cdt, cdn);
+        let row = locals[cdt][cdn];
+        frappe.model.set_value(cdt, cdn, "qty_in_default_uom",
+            (row.entry_qty || 0) * (row.conversion_factor || 1));
     }
 });
-
-function fetch_and_set_factor(cdt, cdn) {
-    let row = locals[cdt][cdn];
-
-    if (!row.entry_uom || !row.default_uom) return;
-
-    if (row.entry_uom === row.default_uom) {
-        frappe.model.set_value(cdt, cdn, "conversion_factor", 1);
-        return;
-    }
-
-    if (!row.item) return;
-
-    // Query ERPNext Item's built-in UOM Conversion Detail table directly
-    frappe.call({
-        method: "frappe.client.get_list",
-        args: {
-            doctype: "UOM Conversion Detail",
-            filters: {
-                parent: row.item,
-                parenttype: "Item",
-                uom: row.entry_uom
-            },
-            fields: ["conversion_factor"],
-            limit_page_length: 1
-        },
-        callback: function(r) {
-            if (r.message && r.message.length > 0) {
-                let factor = r.message[0].conversion_factor;
-                frappe.model.set_value(cdt, cdn, "conversion_factor", factor);
-            } else {
-                frappe.msgprint({
-                    title: __("No Conversion Found"),
-                    message: __("No UOM conversion found for {0} on Item {1}. Please enter Conversion Factor manually or add the UOM on the Item master.", [row.entry_uom, row.item]),
-                    indicator: "orange"
-                });
-            }
-        }
-    });
-}
-
-function calculate_default_qty(cdt, cdn) {
-    let row = locals[cdt][cdn];
-    let qty = (row.entry_qty || 0) * (row.conversion_factor || 1);
-    frappe.model.set_value(cdt, cdn, "qty_in_default_uom", qty);
-}
