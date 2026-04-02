@@ -6,7 +6,6 @@
     "engine": "InnoDB",
     "field_order": [
         "conversion_for",
-        "item",
         "material_profile",
         "stock_category",
         "column_break_1",
@@ -24,17 +23,8 @@
             "fieldtype": "Select",
             "in_list_view": 1,
             "label": "Conversion For",
-            "options": "\nItem\nMaterial Profile\nStock Category",
+            "options": "\nMaterial Profile\nStock Category",
             "reqd": 1
-        },
-        {
-            "depends_on": "eval:doc.conversion_for=='Item'",
-            "fieldname": "item",
-            "fieldtype": "Link",
-            "in_list_view": 1,
-            "label": "Item",
-            "mandatory_depends_on": "eval:doc.conversion_for=='Item'",
-            "options": "Item"
         },
         {
             "depends_on": "eval:doc.conversion_for=='Material Profile'",

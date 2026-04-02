@@ -1,28 +1,78 @@
 import frappe
 
 
+def _get_item_uom_conversion(item, from_uom, to_uom):
+    """
+    Look up conversion from ERPNext Item's built-in UOM Conversion Detail table.
+
+    The Item stores conversions as: UOM -> stock_uom with a conversion_factor.
+    E.g. if stock_uom = Millilitre and Bottle has factor 100,
+    that means 1 Bottle = 100 Millilitre.
+    """
+    try:
+        stock_uom = frappe.db.get_value("Item", item, "stock_uom")
+        if not stock_uom:
+            return None
+
+        # Case 1: entry_uom is in UOM table, to_uom is stock_uom
+        # Factor means: 1 entry_uom = factor × stock_uom
+        if to_uom == stock_uom:
+            factor = frappe.db.get_value(
+                "UOM Conversion Detail",
+                {"parent": item, "parenttype": "Item", "uom": from_uom},
+                "conversion_factor",
+            )
+            if factor:
+                return float(factor)
+
+        # Case 2: from_uom is stock_uom, to_uom is in the table (inverse)
+        if from_uom == stock_uom:
+            factor = frappe.db.get_value(
+                "UOM Conversion Detail",
+                {"parent": item, "parenttype": "Item", "uom": to_uom},
+                "conversion_factor",
+            )
+            if factor and float(factor) != 0:
+                return 1.0 / float(factor)
+
+        # Case 3: Neither is stock_uom - cross-convert via stock_uom
+        from_factor = frappe.db.get_value(
+            "UOM Conversion Detail",
+            {"parent": item, "parenttype": "Item", "uom": from_uom},
+            "conversion_factor",
+        )
+        to_factor = frappe.db.get_value(
+            "UOM Conversion Detail",
+            {"parent": item, "parenttype": "Item", "uom": to_uom},
+            "conversion_factor",
+        )
+        if from_factor and to_factor and float(to_factor) != 0:
+            return float(from_factor) / float(to_factor)
+
+    except Exception:
+        pass
+
+    return None
+
+
 def get_conversion_factor(from_uom, to_uom, item=None, material_profile=None, stock_category=None):
     """
-    Get conversion factor with priority:
-    1. Exact Item rule
-    2. Exact Material Profile rule
-    3. Stock Category rule
-    4. Returns None if not found (caller must handle)
+    Get conversion factor.
+
+    For Item-linked entries: uses ERPNext Item UOM Conversion Detail only.
+    For manual entries: uses custom Stock UOM Conversion Rule
+        (Material Profile level, then Stock Category level).
     """
     if from_uom == to_uom:
         return 1.0
 
-    # Priority 1: Item-specific rule
+    # Item-linked: use ERPNext Item UOM table only
     if item:
-        factor = frappe.db.get_value(
-            "Stock UOM Conversion Rule",
-            {"conversion_for": "Item", "item": item, "from_uom": from_uom, "to_uom": to_uom, "is_active": 1},
-            "conversion_factor",
-        )
+        factor = _get_item_uom_conversion(item, from_uom, to_uom)
         if factor:
-            return float(factor)
+            return factor
 
-    # Priority 2: Material Profile rule
+    # Manual stock: Material Profile rule
     if material_profile:
         factor = frappe.db.get_value(
             "Stock UOM Conversion Rule",
@@ -38,7 +88,7 @@ def get_conversion_factor(from_uom, to_uom, item=None, material_profile=None, st
         if factor:
             return float(factor)
 
-    # Priority 3: Stock Category rule
+    # Manual stock: Stock Category rule
     if stock_category:
         factor = frappe.db.get_value(
             "Stock UOM Conversion Rule",
@@ -95,7 +145,7 @@ def validate_stock_lines(doc, items_field="items"):
             else:
                 frappe.throw(
                     f"Row {row.idx}: No conversion rule found from {row.entry_uom} to {row.default_uom}. "
-                    "Please enter the Conversion Factor manually or create a Stock UOM Conversion Rule."
+                    "Please enter the Conversion Factor manually or add the UOM conversion on the Item."
                 )
 
         # Set conversion factor to 1 if same UOM
