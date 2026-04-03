@@ -1,0 +1,241 @@
+/* VCL Stock Entry - Website Page Styles */
+
+.vcl-stock-entry-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.vcl-page-header {
+    margin-bottom: 20px;
+}
+
+.vcl-page-header h2 {
+    margin-bottom: 4px;
+    color: #333;
+}
+
+/* Cards */
+.vcl-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.vcl-card h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.vcl-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.vcl-card-header h4 {
+    margin: 0;
+}
+
+/* Form Layout */
+.vcl-form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.vcl-form-group {
+    flex: 1;
+}
+
+.vcl-form-group label {
+    display: block;
+    font-weight: 500;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.vcl-full-width {
+    flex: 3;
+}
+
+/* Stock Table */
+.vcl-stock-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.vcl-stock-table thead th {
+    background: #f5f5f5;
+    border-bottom: 2px solid #ddd;
+    padding: 8px 6px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.vcl-stock-table tbody td {
+    padding: 6px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.vcl-stock-table .form-control {
+    font-size: 13px;
+    padding: 4px 8px;
+    height: auto;
+    min-height: 30px;
+}
+
+.vcl-stock-table select.form-control {
+    padding: 4px 6px;
+}
+
+/* Column Widths */
+.vcl-col-num { width: 35px; text-align: center; }
+.vcl-col-item { width: 160px; position: relative; }
+.vcl-col-name { width: 140px; }
+.vcl-col-uom { width: 90px; }
+.vcl-col-qty { width: 90px; }
+.vcl-col-factor { width: 60px; text-align: center; }
+.vcl-col-extra { width: 100px; }
+.vcl-col-notes { width: 100px; }
+.vcl-col-action { width: 36px; text-align: center; }
+
+/* Readonly spans */
+.vcl-readonly {
+    display: inline-block;
+    padding: 4px 0;
+    color: #555;
+    font-size: 13px;
+}
+
+.vcl-qty-default {
+    font-weight: 600;
+    color: #2e7d32;
+}
+
+/* Item Dropdown */
+.vcl-item-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.vcl-dropdown-item {
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 13px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.vcl-dropdown-item:hover {
+    background: #e3f2fd;
+}
+
+/* Remove Button */
+.vcl-remove-line {
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Summary Card */
+.vcl-summary-card {
+    background: #f8f9fa;
+}
+
+.vcl-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.vcl-summary-row strong {
+    color: #1565c0;
+}
+
+/* Action Buttons */
+.vcl-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 8px;
+    margin-bottom: 40px;
+}
+
+.vcl-actions .btn {
+    padding: 8px 24px;
+    font-size: 14px;
+}
+
+/* Messages */
+.vcl-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.vcl-message-success {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    color: #2e7d32;
+}
+
+.vcl-message-error {
+    background: #ffebee;
+    border: 1px solid #ef9a9a;
+    color: #c62828;
+}
+
+.vcl-message-info {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    color: #1565c0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vcl-form-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .vcl-stock-table {
+        font-size: 12px;
+    }
+
+    .vcl-col-extra,
+    .vcl-col-notes {
+        display: none;
+    }
+
+    .vcl-actions {
+        flex-direction: column;
+    }
+
+    .vcl-actions .btn {
+        width: 100%;
+    }
+}

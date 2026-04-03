@@ -1,0 +1,143 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="vcl-stock-entry-page">
+
+    <!-- Page Header -->
+    <div class="vcl-page-header">
+        <h2>Ink &amp; Chemical Stock Entry</h2>
+        <p class="text-muted">Enter stock for inks and chemicals linked to ERP Items</p>
+    </div>
+
+    <!-- Messages -->
+    <div id="vcl-message" class="vcl-message" style="display:none;"></div>
+
+    <!-- Header Card -->
+    <div class="vcl-card">
+        <h4>Entry Details</h4>
+        <div class="vcl-form-row">
+            <div class="vcl-form-group">
+                <label>Posting Date <span class="text-danger">*</span></label>
+                <input type="date" id="posting_date" class="form-control" value="{{ today }}">
+            </div>
+            <div class="vcl-form-group">
+                <label>Department</label>
+                <input type="text" id="department" class="form-control" placeholder="e.g. Printing">
+            </div>
+            <div class="vcl-form-group">
+                <label>Location <span class="text-danger">*</span></label>
+                <input type="text" id="location" class="form-control" placeholder="e.g. Main Store">
+            </div>
+        </div>
+        <div class="vcl-form-row">
+            <div class="vcl-form-group vcl-full-width">
+                <label>Remarks</label>
+                <textarea id="remarks" class="form-control" rows="2" placeholder="Optional remarks"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Lines Card -->
+    <div class="vcl-card">
+        <div class="vcl-card-header">
+            <h4>Stock Lines</h4>
+            <button class="btn btn-sm btn-primary" onclick="VCL.addLine()">+ Add Line</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table vcl-stock-table" id="stock-lines-table">
+                <thead>
+                    <tr>
+                        <th class="vcl-col-num">#</th>
+                        <th class="vcl-col-item">Item</th>
+                        <th class="vcl-col-name">Item Name</th>
+                        <th class="vcl-col-uom">Default UOM</th>
+                        <th class="vcl-col-uom">Entry UOM</th>
+                        <th class="vcl-col-qty">Entry Qty</th>
+                        <th class="vcl-col-factor">Factor</th>
+                        <th class="vcl-col-qty">Qty (Default)</th>
+                        <th class="vcl-col-extra">Supplier</th>
+                        <th class="vcl-col-extra">Batch No</th>
+                        <th class="vcl-col-extra">Expiry</th>
+                        <th class="vcl-col-notes">Notes</th>
+                        <th class="vcl-col-action"></th>
+                    </tr>
+                </thead>
+                <tbody id="stock-lines-body">
+                    <!-- Lines added dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="no-lines-msg" class="text-muted text-center p-3">
+            No lines added. Click <strong>+ Add Line</strong> to start.
+        </div>
+    </div>
+
+    <!-- Summary Card -->
+    <div class="vcl-card vcl-summary-card">
+        <div class="vcl-summary-row">
+            <span>Total Lines: <strong id="total-lines">0</strong></span>
+            <span>Total Qty (Default UOM): <strong id="total-qty">0.00</strong></span>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="vcl-actions">
+        <button class="btn btn-default" onclick="VCL.resetPage()">Reset</button>
+        <button class="btn btn-warning" onclick="VCL.saveDraft()" id="btn-save-draft">Save Draft</button>
+        <button class="btn btn-primary" onclick="VCL.saveSubmit()" id="btn-save-submit">Save &amp; Submit</button>
+    </div>
+
+</div>
+
+<!-- Line Row Template (hidden) -->
+<template id="line-row-template">
+    <tr class="vcl-line-row" data-idx="">
+        <td class="vcl-col-num"><span class="line-idx"></span></td>
+        <td class="vcl-col-item">
+            <input type="text" class="form-control vcl-item-input" placeholder="Type item code..."
+                   data-field="item" autocomplete="off">
+            <div class="vcl-item-dropdown" style="display:none;"></div>
+        </td>
+        <td class="vcl-col-name">
+            <span class="vcl-readonly" data-field="item_name">-</span>
+        </td>
+        <td class="vcl-col-uom">
+            <span class="vcl-readonly" data-field="default_uom">-</span>
+        </td>
+        <td class="vcl-col-uom">
+            <select class="form-control" data-field="entry_uom">
+                <option value="">Select UOM</option>
+            </select>
+        </td>
+        <td class="vcl-col-qty">
+            <input type="number" class="form-control" data-field="entry_qty" step="any" min="0" value="">
+        </td>
+        <td class="vcl-col-factor">
+            <span class="vcl-readonly" data-field="conversion_factor">1</span>
+        </td>
+        <td class="vcl-col-qty">
+            <span class="vcl-readonly vcl-qty-default" data-field="qty_in_default_uom">0.00</span>
+        </td>
+        <td class="vcl-col-extra">
+            <input type="text" class="form-control" data-field="supplier" placeholder="">
+        </td>
+        <td class="vcl-col-extra">
+            <input type="text" class="form-control" data-field="batch_no" placeholder="">
+        </td>
+        <td class="vcl-col-extra">
+            <input type="date" class="form-control" data-field="expiry_date">
+        </td>
+        <td class="vcl-col-notes">
+            <input type="text" class="form-control" data-field="notes" placeholder="">
+        </td>
+        <td class="vcl-col-action">
+            <button class="btn btn-xs btn-danger vcl-remove-line" title="Remove">&times;</button>
+        </td>
+    </tr>
+</template>
+
+<script src="/assets/vcl_stock_control/js/ink_chemical_entry.js"></script>
+<link rel="stylesheet" href="/assets/vcl_stock_control/css/ink_chemical_entry.css">
+{% endblock %}
