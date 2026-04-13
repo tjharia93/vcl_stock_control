@@ -1,0 +1,336 @@
+{
+    "actions": [],
+    "allow_import": 1,
+    "autoname": "naming_series:",
+    "creation": "2026-04-13 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "is_submittable": 1,
+    "field_order": [
+        "naming_series",
+        "transaction_type",
+        "posting_date",
+        "posting_time",
+        "column_break_header",
+        "site",
+        "tank_reference",
+        "amended_from",
+        "section_break_balance",
+        "opening_balance",
+        "column_break_balance",
+        "closing_balance",
+        "section_break_issue",
+        "issue_to",
+        "column_break_issue1",
+        "qty_issued",
+        "section_break_vehicle",
+        "vehicle",
+        "vehicle_plate",
+        "column_break_vehicle",
+        "driver",
+        "driver_name",
+        "section_break_km",
+        "km_before_fueling",
+        "column_break_km",
+        "previous_km",
+        "km_since_last_fill",
+        "previous_litres",
+        "km_per_litre",
+        "consumption_flag",
+        "section_break_nonvehicle",
+        "purpose_description",
+        "section_break_receipt",
+        "qty_received",
+        "column_break_receipt",
+        "supplier_name",
+        "delivery_reference",
+        "section_break_accountability",
+        "issued_by",
+        "issued_by_name",
+        "column_break_accountability",
+        "remarks"
+    ],
+    "fields": [
+        {
+            "fieldname": "naming_series",
+            "fieldtype": "Select",
+            "label": "Naming Series",
+            "options": "FLE-.YYYY.-.#####",
+            "default": "FLE-.YYYY.-.#####",
+            "reqd": 1
+        },
+        {
+            "fieldname": "transaction_type",
+            "fieldtype": "Select",
+            "label": "Transaction Type",
+            "options": "Issue\nReceive",
+            "default": "Issue",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "default": "Today",
+            "fieldname": "posting_date",
+            "fieldtype": "Date",
+            "label": "Date",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "default": "Now",
+            "fieldname": "posting_time",
+            "fieldtype": "Time",
+            "label": "Time",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_header",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "site",
+            "fieldtype": "Data",
+            "label": "Site",
+            "default": "Factory",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "tank_reference",
+            "fieldtype": "Data",
+            "label": "Tank Reference",
+            "default": "Bulk Diesel Tank"
+        },
+        {
+            "fieldname": "amended_from",
+            "fieldtype": "Link",
+            "label": "Amended From",
+            "no_copy": 1,
+            "options": "Fuel Log Entry",
+            "print_hide": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "section_break_balance",
+            "fieldtype": "Section Break",
+            "label": "Tank Balance"
+        },
+        {
+            "fieldname": "opening_balance",
+            "fieldtype": "Float",
+            "label": "Opening Balance (L)",
+            "reqd": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_balance",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "closing_balance",
+            "fieldtype": "Float",
+            "label": "Closing Balance (L)",
+            "reqd": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "section_break_issue",
+            "fieldtype": "Section Break",
+            "label": "Issuance Details",
+            "depends_on": "eval:doc.transaction_type==\"Issue\""
+        },
+        {
+            "fieldname": "issue_to",
+            "fieldtype": "Select",
+            "label": "Issue To",
+            "options": "\nVehicle\nGenerator\nMachine\nOther",
+            "mandatory_depends_on": "eval:doc.transaction_type==\"Issue\""
+        },
+        {
+            "fieldname": "column_break_issue1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "qty_issued",
+            "fieldtype": "Float",
+            "label": "Litres Issued",
+            "in_list_view": 1,
+            "mandatory_depends_on": "eval:doc.transaction_type==\"Issue\""
+        },
+        {
+            "fieldname": "section_break_vehicle",
+            "fieldtype": "Section Break",
+            "label": "Vehicle Details",
+            "depends_on": "eval:doc.issue_to==\"Vehicle\""
+        },
+        {
+            "fieldname": "vehicle",
+            "fieldtype": "Link",
+            "label": "Vehicle",
+            "options": "Vehicle",
+            "mandatory_depends_on": "eval:doc.issue_to==\"Vehicle\""
+        },
+        {
+            "fieldname": "vehicle_plate",
+            "fieldtype": "Data",
+            "label": "Registration No",
+            "read_only": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "column_break_vehicle",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "driver",
+            "fieldtype": "Link",
+            "label": "Driver",
+            "options": "Employee",
+            "mandatory_depends_on": "eval:doc.issue_to==\"Vehicle\""
+        },
+        {
+            "fieldname": "driver_name",
+            "fieldtype": "Data",
+            "label": "Driver Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "section_break_km",
+            "fieldtype": "Section Break",
+            "label": "Mileage",
+            "depends_on": "eval:doc.issue_to==\"Vehicle\""
+        },
+        {
+            "fieldname": "km_before_fueling",
+            "fieldtype": "Float",
+            "label": "KM Before Fueling",
+            "mandatory_depends_on": "eval:doc.issue_to==\"Vehicle\""
+        },
+        {
+            "fieldname": "column_break_km",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "previous_km",
+            "fieldtype": "Float",
+            "label": "Previous KM Reading",
+            "read_only": 1
+        },
+        {
+            "fieldname": "km_since_last_fill",
+            "fieldtype": "Float",
+            "label": "KM Since Last Fill",
+            "read_only": 1
+        },
+        {
+            "fieldname": "previous_litres",
+            "fieldtype": "Float",
+            "label": "Previous Litres Issued",
+            "read_only": 1
+        },
+        {
+            "fieldname": "km_per_litre",
+            "fieldtype": "Float",
+            "label": "KM per Litre",
+            "read_only": 1
+        },
+        {
+            "fieldname": "consumption_flag",
+            "fieldtype": "Select",
+            "label": "Consumption Flag",
+            "options": "\nNormal\nWarning\nCritical",
+            "read_only": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "section_break_nonvehicle",
+            "fieldtype": "Section Break",
+            "label": "Equipment Details",
+            "depends_on": "eval:doc.issue_to && doc.issue_to!=\"Vehicle\""
+        },
+        {
+            "fieldname": "purpose_description",
+            "fieldtype": "Data",
+            "label": "Purpose / Equipment",
+            "mandatory_depends_on": "eval:doc.transaction_type==\"Issue\" && doc.issue_to && doc.issue_to!=\"Vehicle\""
+        },
+        {
+            "fieldname": "section_break_receipt",
+            "fieldtype": "Section Break",
+            "label": "Receipt Details",
+            "depends_on": "eval:doc.transaction_type==\"Receive\""
+        },
+        {
+            "fieldname": "qty_received",
+            "fieldtype": "Float",
+            "label": "Litres Received",
+            "in_list_view": 1,
+            "mandatory_depends_on": "eval:doc.transaction_type==\"Receive\""
+        },
+        {
+            "fieldname": "column_break_receipt",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "supplier_name",
+            "fieldtype": "Data",
+            "label": "Supplier"
+        },
+        {
+            "fieldname": "delivery_reference",
+            "fieldtype": "Data",
+            "label": "Invoice / DO No"
+        },
+        {
+            "fieldname": "section_break_accountability",
+            "fieldtype": "Section Break",
+            "label": "Accountability"
+        },
+        {
+            "fieldname": "issued_by",
+            "fieldtype": "Link",
+            "label": "Issued / Received By",
+            "options": "Employee",
+            "reqd": 1
+        },
+        {
+            "fieldname": "issued_by_name",
+            "fieldtype": "Data",
+            "label": "Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_accountability",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "remarks",
+            "fieldtype": "Small Text",
+            "label": "Remarks"
+        }
+    ],
+    "links": [],
+    "modified": "2026-04-13 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Transactions",
+    "name": "Fuel Log Entry",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1, "delete": 1, "email": 1, "export": 1, "print": 1,
+            "read": 1, "report": 1, "role": "System Manager", "share": 1,
+            "submit": 1, "cancel": 1, "amend": 1, "write": 1
+        },
+        {
+            "create": 1, "read": 1, "report": 1, "role": "Stock Manager",
+            "submit": 1, "cancel": 1, "amend": 1, "write": 1
+        },
+        {
+            "create": 1, "read": 1, "role": "Stock User", "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "track_changes": 1
+}
