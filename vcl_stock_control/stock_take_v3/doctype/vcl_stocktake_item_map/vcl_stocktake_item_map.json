@@ -1,0 +1,264 @@
+{
+    "actions": [],
+    "autoname": "naming_series:",
+    "creation": "2026-05-10 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "naming_series",
+        "display_row_label",
+        "area",
+        "section",
+        "column_break_header",
+        "active",
+        "release_version",
+        "mapping_status",
+        "section_break_item",
+        "erpnext_item",
+        "erpnext_item_name",
+        "godown_warehouse_label",
+        "erpnext_warehouse",
+        "section_break_uom",
+        "count_uom",
+        "erpnext_stock_uom",
+        "column_break_uom",
+        "conversion_rule",
+        "conversion_factor",
+        "section_break_reel",
+        "width_mm",
+        "standard_length_m",
+        "column_break_reel",
+        "avg_weight_kg",
+        "section_break_print",
+        "print_sequence",
+        "section_break_review",
+        "reviewed_by",
+        "reviewed_on",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "default": "STM-.YYYY.-.#####",
+            "fieldname": "naming_series",
+            "fieldtype": "Select",
+            "label": "Naming Series",
+            "options": "STM-.YYYY.-.#####",
+            "reqd": 1
+        },
+        {
+            "fieldname": "display_row_label",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Display Row Label",
+            "reqd": 1
+        },
+        {
+            "fieldname": "area",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Area",
+            "options": "\nBrown Paper\nLabels\nNCR\nInks & Chemicals"
+        },
+        {
+            "fieldname": "section",
+            "fieldtype": "Data",
+            "label": "Section"
+        },
+        {
+            "fieldname": "column_break_header",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "1",
+            "fieldname": "active",
+            "fieldtype": "Check",
+            "in_list_view": 1,
+            "label": "Active"
+        },
+        {
+            "fieldname": "release_version",
+            "fieldtype": "Link",
+            "label": "Release Version",
+            "options": "VCL Stocktake Mapping Release"
+        },
+        {
+            "default": "Draft",
+            "fieldname": "mapping_status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Mapping Status",
+            "options": "Draft\nNeeds ERPNext Item\nNeeds Warehouse\nNeeds UOM\nNeeds Conversion Rule\nReady for Review\nApproved for Print\nExcluded\nInactive",
+            "reqd": 1
+        },
+        {
+            "fieldname": "section_break_item",
+            "fieldtype": "Section Break",
+            "label": "ERPNext Item Linkage"
+        },
+        {
+            "fieldname": "erpnext_item",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "ERPNext Item",
+            "options": "Item"
+        },
+        {
+            "fetch_from": "erpnext_item.item_name",
+            "fieldname": "erpnext_item_name",
+            "fieldtype": "Data",
+            "label": "ERPNext Item Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "godown_warehouse_label",
+            "fieldtype": "Data",
+            "label": "Godown / Warehouse Label",
+            "description": "Free-text label as it appears on the physical stocktake sheet"
+        },
+        {
+            "fieldname": "erpnext_warehouse",
+            "fieldtype": "Link",
+            "label": "ERPNext Warehouse",
+            "options": "Warehouse"
+        },
+        {
+            "fieldname": "section_break_uom",
+            "fieldtype": "Section Break",
+            "label": "UOM & Conversion"
+        },
+        {
+            "fieldname": "count_uom",
+            "fieldtype": "Link",
+            "label": "Count UOM",
+            "options": "UOM",
+            "description": "UOM used by the operator on the count sheet"
+        },
+        {
+            "fieldname": "erpnext_stock_uom",
+            "fieldtype": "Link",
+            "label": "ERPNext Stock UOM",
+            "options": "UOM",
+            "description": "Stock UOM of the linked ERPNext Item"
+        },
+        {
+            "fieldname": "column_break_uom",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "None",
+            "fieldname": "conversion_rule",
+            "fieldtype": "Select",
+            "label": "Conversion Rule",
+            "options": "None\nFixed Factor\nReel to SQM\nReel to KG\nManual Confirmed\nPack Size"
+        },
+        {
+            "fieldname": "conversion_factor",
+            "fieldtype": "Float",
+            "label": "Conversion Factor",
+            "description": "Required when Conversion Rule is Fixed Factor or Pack Size; must be > 0"
+        },
+        {
+            "fieldname": "section_break_reel",
+            "fieldtype": "Section Break",
+            "label": "Reel Inputs",
+            "collapsible": 1,
+            "description": "Used by Reel to SQM and Reel to KG conversion rules"
+        },
+        {
+            "fieldname": "width_mm",
+            "fieldtype": "Float",
+            "label": "Width (mm)"
+        },
+        {
+            "fieldname": "standard_length_m",
+            "fieldtype": "Float",
+            "label": "Standard Length (m)"
+        },
+        {
+            "fieldname": "column_break_reel",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "avg_weight_kg",
+            "fieldtype": "Float",
+            "label": "Avg Weight (kg)"
+        },
+        {
+            "fieldname": "section_break_print",
+            "fieldtype": "Section Break",
+            "label": "Print Layout"
+        },
+        {
+            "fieldname": "print_sequence",
+            "fieldtype": "Int",
+            "label": "Print Sequence",
+            "description": "Positive integer that controls print order; required for approval"
+        },
+        {
+            "fieldname": "section_break_review",
+            "fieldtype": "Section Break",
+            "label": "Review",
+            "collapsible": 1
+        },
+        {
+            "fieldname": "reviewed_by",
+            "fieldtype": "Link",
+            "label": "Reviewed By",
+            "options": "User"
+        },
+        {
+            "fieldname": "reviewed_on",
+            "fieldtype": "Datetime",
+            "label": "Reviewed On"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "links": [],
+    "modified": "2026-05-10 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Stock Take V3",
+    "name": "VCL Stocktake Item Map",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock Manager",
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "Stock User"
+        }
+    ],
+    "search_fields": "display_row_label,area,erpnext_item,godown_warehouse_label",
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "title_field": "display_row_label",
+    "track_changes": 1
+}
