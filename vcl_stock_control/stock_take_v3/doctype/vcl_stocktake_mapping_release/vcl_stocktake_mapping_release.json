@@ -1,0 +1,121 @@
+{
+    "actions": [],
+    "autoname": "field:release_version",
+    "creation": "2026-05-10 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "release_version",
+        "release_date",
+        "status",
+        "column_break_1",
+        "approved_by",
+        "approved_on",
+        "section_break_areas",
+        "areas_included",
+        "section_break_remarks",
+        "remarks"
+    ],
+    "fields": [
+        {
+            "fieldname": "release_version",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Release Version",
+            "reqd": 1,
+            "unique": 1,
+            "description": "Human-readable release identifier, e.g. 2026-Q2-R1. Used as the document name."
+        },
+        {
+            "default": "Today",
+            "fieldname": "release_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Release Date",
+            "reqd": 1
+        },
+        {
+            "default": "Draft",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Status",
+            "options": "Draft\nUnder Review\nApproved\nLocked\nCancelled",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "approved_by",
+            "fieldtype": "Link",
+            "label": "Approved By",
+            "options": "User"
+        },
+        {
+            "fieldname": "approved_on",
+            "fieldtype": "Datetime",
+            "label": "Approved On"
+        },
+        {
+            "fieldname": "section_break_areas",
+            "fieldtype": "Section Break",
+            "label": "Areas Included"
+        },
+        {
+            "fieldname": "areas_included",
+            "fieldtype": "Small Text",
+            "label": "Areas Included",
+            "description": "Comma-separated list of areas, e.g. Brown Paper, Labels, NCR"
+        },
+        {
+            "fieldname": "section_break_remarks",
+            "fieldtype": "Section Break",
+            "label": "Remarks"
+        },
+        {
+            "fieldname": "remarks",
+            "fieldtype": "Small Text",
+            "label": "Remarks"
+        }
+    ],
+    "links": [],
+    "modified": "2026-05-10 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Stock Take V3",
+    "name": "VCL Stocktake Mapping Release",
+    "naming_rule": "By fieldname",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock Manager",
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "Stock User"
+        }
+    ],
+    "search_fields": "release_version,status",
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "title_field": "release_version",
+    "track_changes": 1
+}
