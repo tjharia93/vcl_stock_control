@@ -135,7 +135,7 @@ def write_csv(results: list[DiscoveryResult], path: str = "item_discovery_report
 
 def _load_canonical_seeds() -> list[CanonicalRow]:
     """Load canonical rows from setup/canonical_seeds.csv if present, else use a stub."""
-    seeds_path = Path(frappe.get_app_path("vcl_stock_control")).parent / "setup" / "canonical_seeds.csv"
+    seeds_path = Path(frappe.get_app_path("vcl_stock_control")) / "setup" / "canonical_seeds.csv"
     if seeds_path.exists():
         rows = []
         with open(seeds_path) as f:

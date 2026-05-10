@@ -121,12 +121,21 @@ def _resolve_erpnext_item(vcl_key: str) -> tuple[str, str]:
 
 
 def _create_stock_reconciliation(sheet, warehouse: str, lines: list, posting_user: str | None) -> str:
+    company = _resolve_company(warehouse)
+    accounts = _resolve_accounts(company)
+
     sr = frappe.new_doc("Stock Reconciliation")
     sr.purpose = "Stock Reconciliation"
     sr.posting_date = sheet.count_date
     sr.posting_time = (sheet.modified or now_datetime()).strftime("%H:%M:%S")
     sr.set_warehouse = warehouse
-    sr.company = _resolve_company(warehouse)
+    sr.company = company
+    if accounts.get("expense_account"):
+        sr.expense_account = accounts["expense_account"]
+    if accounts.get("cost_center"):
+        sr.cost_center = accounts["cost_center"]
+    if accounts.get("difference_account"):
+        sr.difference_account = accounts["difference_account"]
     sr.remarks = (
         f"Posted from VCL Stock Count Sheet {sheet.name} "
         f"(cycle={sheet.cycle}, sheet_code={sheet.sheet_code}, "
@@ -152,6 +161,19 @@ def _resolve_company(warehouse: str) -> str:
     if not company:
         frappe.throw(_("Warehouse {0} has no company set.").format(warehouse))
     return company
+
+
+def _resolve_accounts(company: str) -> dict:
+    """Pull difference account / expense account / cost center defaults so the
+    Stock Reconciliation submit doesn't fail on a fresh ERPNext where the user
+    didn't pre-set them in Stock Settings."""
+    out: dict = {}
+    out["expense_account"] = frappe.db.get_value(
+        "Company", company, "stock_adjustment_account"
+    )
+    out["cost_center"] = frappe.db.get_value("Company", company, "cost_center")
+    out["difference_account"] = out["expense_account"]
+    return out
 
 
 @frappe.whitelist()

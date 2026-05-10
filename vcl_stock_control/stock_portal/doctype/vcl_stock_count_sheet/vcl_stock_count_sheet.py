@@ -45,6 +45,9 @@ class VCLStockCountSheet(Document):
                     f"Invalid status transition: {previous} -> {self.status}. "
                     f"Allowed from {previous}: {sorted(allowed) or 'none'}."
                 )
+            self._previous_status = previous
+        else:
+            self._previous_status = previous
 
     def _compute_variance(self):
         for line in self.lines:
@@ -63,15 +66,18 @@ class VCLStockCountSheet(Document):
                 return
         self.coverage_satisfied = 1
 
-    def on_submit(self):
+    def on_update(self):
+        previous = getattr(self, "_previous_status", None)
+        if previous == self.status:
+            return
+
         from vcl_stock_control.stock_portal.doctype.vcl_stock_portal_settings.vcl_stock_portal_settings import (
             get_settings,
         )
 
-        settings = get_settings()
-        self.direct_post_mode_snapshot = 1 if settings.direct_post_mode else 0
-
-        if settings.direct_post_mode:
-            from vcl_stock_control.api.post_to_erpnext import post_count_sheet
-
-            post_count_sheet(self.name)
+        if self.status == "Approved":
+            settings = get_settings()
+            if settings.direct_post_mode and not self.direct_post_mode_snapshot:
+                self.db_set("direct_post_mode_snapshot", 1)
+                from vcl_stock_control.api.post_to_erpnext import post_count_sheet
+                post_count_sheet(self.name)

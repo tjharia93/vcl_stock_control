@@ -170,7 +170,6 @@
             "report": 1,
             "role": "System Manager",
             "share": 1,
-            "submit": 1,
             "write": 1
         },
         {
@@ -182,7 +181,6 @@
             "report": 1,
             "role": "Stock Manager",
             "share": 1,
-            "submit": 1,
             "write": 1
         },
         {
