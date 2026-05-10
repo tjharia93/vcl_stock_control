@@ -1,0 +1,126 @@
+{
+    "actions": [],
+    "creation": "2026-05-10 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "section_break_post",
+        "direct_post_mode",
+        "coverage_check_enabled",
+        "column_break_post",
+        "variance_warn_threshold_pct",
+        "auto_save_interval_seconds",
+        "section_break_default",
+        "default_cycle",
+        "section_break_brand",
+        "brand_primary_color",
+        "brand_accent_color",
+        "brand_soft_color",
+        "brand_warn_color"
+    ],
+    "fields": [
+        {
+            "fieldname": "section_break_post",
+            "fieldtype": "Section Break",
+            "label": "Posting"
+        },
+        {
+            "default": "0",
+            "description": "KILL SWITCH. When ON, sheet on_submit posts immediately to ERPNext Stock Reconciliation. When OFF (default), sheet stops at Approved and admin posts manually.",
+            "fieldname": "direct_post_mode",
+            "fieldtype": "Check",
+            "label": "Direct Post Mode (Kill Switch)"
+        },
+        {
+            "default": "1",
+            "description": "When ON, sheet cannot transition to Submitted unless every line has counted_at OR skip_reason set. UAT-04 / flood-gap protection.",
+            "fieldname": "coverage_check_enabled",
+            "fieldtype": "Check",
+            "label": "Coverage Check Enabled"
+        },
+        {
+            "fieldname": "column_break_post",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "5",
+            "description": "Variance % above which UI highlights a row amber. Posting still proceeds.",
+            "fieldname": "variance_warn_threshold_pct",
+            "fieldtype": "Float",
+            "label": "Variance Warn Threshold %",
+            "precision": "2"
+        },
+        {
+            "default": "30",
+            "description": "Web entry form auto-save interval (seconds).",
+            "fieldname": "auto_save_interval_seconds",
+            "fieldtype": "Int",
+            "label": "Auto-save Interval (seconds)"
+        },
+        {
+            "fieldname": "section_break_default",
+            "fieldtype": "Section Break",
+            "label": "Defaults"
+        },
+        {
+            "fieldname": "default_cycle",
+            "fieldtype": "Link",
+            "label": "Default Cycle",
+            "options": "VCL Stock Count Cycle"
+        },
+        {
+            "fieldname": "section_break_brand",
+            "fieldtype": "Section Break",
+            "label": "Branding"
+        },
+        {
+            "default": "#2B3990",
+            "fieldname": "brand_primary_color",
+            "fieldtype": "Data",
+            "label": "Primary Color"
+        },
+        {
+            "default": "#ED1C24",
+            "fieldname": "brand_accent_color",
+            "fieldtype": "Data",
+            "label": "Accent Color"
+        },
+        {
+            "default": "#DCE6F1",
+            "fieldname": "brand_soft_color",
+            "fieldtype": "Data",
+            "label": "Soft Color"
+        },
+        {
+            "default": "#FFE699",
+            "fieldname": "brand_warn_color",
+            "fieldtype": "Data",
+            "label": "Warn Color"
+        }
+    ],
+    "issingle": 1,
+    "links": [],
+    "modified": "2026-05-10 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Stock Portal",
+    "name": "VCL Stock Portal Settings",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

@@ -1,0 +1,177 @@
+{
+    "actions": [],
+    "autoname": "field:vcl_key",
+    "creation": "2026-05-10 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "vcl_key",
+        "canonical_label",
+        "sheet_code",
+        "pattern",
+        "column_break_1",
+        "reconciliation_status",
+        "is_active",
+        "section_break_erpnext",
+        "erpnext_item",
+        "uom",
+        "default_warehouse",
+        "column_break_2",
+        "legacy_codes",
+        "section_break_variant",
+        "variant_attributes",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "description": "Canonical VCL key. Stable across ERPNext code churn. Format: SHEET-VARIANT (e.g. BPR-44GSM-1010MM).",
+            "fieldname": "vcl_key",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "VCL Key",
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "fieldname": "canonical_label",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Canonical Label",
+            "reqd": 1
+        },
+        {
+            "description": "Sheet/template this item belongs to (e.g. BROWN_PAPER_REELS, FUEL, FG).",
+            "fieldname": "sheet_code",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Sheet Code",
+            "reqd": 1
+        },
+        {
+            "description": "UI pattern this item is captured under.",
+            "fieldname": "pattern",
+            "fieldtype": "Select",
+            "label": "Pattern",
+            "options": "Single Warehouse List\nPer-Godown Ledger\nMulti-Warehouse Matrix",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "PENDING",
+            "description": "REUSE = legacy ERPNext item is correct. RECONCILE = legacy item exists but code/UOM needs cleanup. CREATE = new ERPNext item required.",
+            "fieldname": "reconciliation_status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Reconciliation Status",
+            "options": "PENDING\nREUSE\nRECONCILE\nCREATE",
+            "reqd": 1
+        },
+        {
+            "default": "1",
+            "fieldname": "is_active",
+            "fieldtype": "Check",
+            "in_list_view": 1,
+            "label": "Is Active"
+        },
+        {
+            "fieldname": "section_break_erpnext",
+            "fieldtype": "Section Break",
+            "label": "ERPNext Mapping"
+        },
+        {
+            "description": "Target ERPNext Item. Required before sheet can be posted.",
+            "fieldname": "erpnext_item",
+            "fieldtype": "Link",
+            "label": "ERPNext Item",
+            "options": "Item"
+        },
+        {
+            "fieldname": "uom",
+            "fieldtype": "Link",
+            "label": "UOM",
+            "options": "UOM"
+        },
+        {
+            "description": "Default warehouse for Single Warehouse List / Per-Godown Ledger patterns. Matrix patterns derive warehouse per column.",
+            "fieldname": "default_warehouse",
+            "fieldtype": "Link",
+            "label": "Default Warehouse",
+            "options": "Warehouse"
+        },
+        {
+            "fieldname": "column_break_2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "description": "Comma-separated legacy ERPNext item codes that this canonical key supersedes. Audit trail only.",
+            "fieldname": "legacy_codes",
+            "fieldtype": "Small Text",
+            "label": "Legacy ERPNext Codes"
+        },
+        {
+            "fieldname": "section_break_variant",
+            "fieldtype": "Section Break",
+            "label": "Variant Attributes"
+        },
+        {
+            "description": "JSON of variant attributes for matrix rows (e.g. {\"gsm\": 44, \"width_mm\": 1010}).",
+            "fieldname": "variant_attributes",
+            "fieldtype": "JSON",
+            "label": "Variant Attributes"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "links": [],
+    "modified": "2026-05-10 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Stock Portal",
+    "name": "VCL Item Map",
+    "naming_rule": "By fieldname",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "Stock User"
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

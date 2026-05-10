@@ -1,0 +1,144 @@
+{
+    "actions": [],
+    "creation": "2026-05-10 00:00:00.000000",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "vcl_key",
+        "item_label",
+        "erpnext_item",
+        "warehouse",
+        "uom",
+        "column_break_1",
+        "system_qty",
+        "counted_qty",
+        "variance_qty",
+        "section_break_audit",
+        "counted_at",
+        "counted_by",
+        "skip_reason",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "columns": 2,
+            "fieldname": "vcl_key",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "VCL Key",
+            "options": "VCL Item Map",
+            "reqd": 1
+        },
+        {
+            "columns": 3,
+            "fetch_from": "vcl_key.canonical_label",
+            "fieldname": "item_label",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Item Label",
+            "read_only": 1
+        },
+        {
+            "fetch_from": "vcl_key.erpnext_item",
+            "fieldname": "erpnext_item",
+            "fieldtype": "Data",
+            "label": "ERPNext Item",
+            "read_only": 1
+        },
+        {
+            "columns": 2,
+            "description": "Required for Multi-Warehouse Matrix pattern; defaulted from VCL Item Map for other patterns.",
+            "fieldname": "warehouse",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Warehouse",
+            "options": "Warehouse"
+        },
+        {
+            "fetch_from": "vcl_key.uom",
+            "fieldname": "uom",
+            "fieldtype": "Link",
+            "label": "UOM",
+            "options": "UOM",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "0",
+            "description": "ERPNext system qty at time of sheet creation (snapshot).",
+            "fieldname": "system_qty",
+            "fieldtype": "Float",
+            "label": "System Qty",
+            "precision": "3",
+            "read_only": 1
+        },
+        {
+            "columns": 1,
+            "description": "Physical counted qty. Zero is a valid audit signal and DOES post.",
+            "fieldname": "counted_qty",
+            "fieldtype": "Float",
+            "in_list_view": 1,
+            "label": "Counted Qty",
+            "precision": "3"
+        },
+        {
+            "fieldname": "variance_qty",
+            "fieldtype": "Float",
+            "label": "Variance",
+            "precision": "3",
+            "read_only": 1
+        },
+        {
+            "fieldname": "section_break_audit",
+            "fieldtype": "Section Break",
+            "label": "Audit"
+        },
+        {
+            "description": "Set when counter records the qty. Coverage check blocks submit if any non-skipped line has counted_at NULL.",
+            "fieldname": "counted_at",
+            "fieldtype": "Datetime",
+            "label": "Counted At",
+            "read_only": 1
+        },
+        {
+            "fieldname": "counted_by",
+            "fieldtype": "Link",
+            "label": "Counted By",
+            "options": "User",
+            "read_only": 1
+        },
+        {
+            "description": "If set, line is excluded from posting. Counter must explicitly skip with a reason — cannot leave blank.",
+            "fieldname": "skip_reason",
+            "fieldtype": "Small Text",
+            "label": "Skip Reason"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "istable": 1,
+    "links": [],
+    "modified": "2026-05-10 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Stock Portal",
+    "name": "VCL Stock Count Line",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

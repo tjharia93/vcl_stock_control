@@ -1,0 +1,70 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Stock Portal{% endblock %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/assets/vcl_stock_control/css/portal.css">
+
+<div class="vcl-portal">
+    <header class="vcl-header">
+        <h1>VCL Stock Portal</h1>
+        <p class="vcl-muted">Logged in as <strong>{{ frappe.session.user }}</strong> &middot; Role: <strong>{{ role }}</strong></p>
+    </header>
+
+    {% if active_cycle %}
+        <section class="vcl-card">
+            <h2>Active Cycle: {{ active_cycle.period_label }}</h2>
+            <p>{{ active_cycle.start_date }} &rarr; {{ active_cycle.end_date }} &middot; status <strong>{{ active_cycle.status }}</strong></p>
+        </section>
+    {% else %}
+        <section class="vcl-card vcl-warn">
+            <p>No active cycle. Ask an admin to open one in <a href="/app/vcl-stock-count-cycle">Desk &rarr; VCL Stock Count Cycle</a>.</p>
+        </section>
+    {% endif %}
+
+    {% if my_sheets %}
+        <section class="vcl-card">
+            <h2>My Sheets</h2>
+            <table class="vcl-table">
+                <thead>
+                    <tr><th>Sheet</th><th>Title</th><th>Pattern</th><th>Status</th><th>Coverage</th><th></th></tr>
+                </thead>
+                <tbody>
+                {% for s in my_sheets %}
+                    <tr>
+                        <td>{{ s.name }}</td>
+                        <td>{{ s.sheet_title }}</td>
+                        <td>{{ s.pattern }}</td>
+                        <td><span class="vcl-status vcl-status-{{ s.status|lower|replace(' ', '-') }}">{{ s.status }}</span></td>
+                        <td>{{ "OK" if s.coverage_satisfied else "Missing" }}</td>
+                        <td>
+                            {% if s.status in ("Submitted", "Under Review", "Approved") %}
+                                <a href="/stock-portal/review/{{ s.name }}">Review</a>
+                            {% else %}
+                                <a href="/stock-portal/sheet/{{ s.name }}">Open</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    {% else %}
+        <section class="vcl-card">
+            <p>No sheets assigned yet.</p>
+        </section>
+    {% endif %}
+
+    {% if is_admin %}
+        <section class="vcl-card">
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="/app/vcl-stock-count-cycle/new">Open new cycle</a></li>
+                <li><a href="/app/vcl-stock-count-sheet/new">Create sheet</a></li>
+                <li><a href="/app/vcl-item-map">Item Map</a></li>
+                <li><a href="/app/vcl-stock-portal-settings">Portal Settings (kill switch)</a></li>
+            </ul>
+        </section>
+    {% endif %}
+</div>
+{% endblock %}

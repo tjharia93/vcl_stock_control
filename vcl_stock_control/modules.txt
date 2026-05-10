@@ -1,3 +1,4 @@
 Masters
 Transactions
 Reports
+Stock Portal

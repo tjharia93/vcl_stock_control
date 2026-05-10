@@ -1,0 +1,112 @@
+{
+    "actions": [],
+    "autoname": "format:CYC-{####}",
+    "creation": "2026-05-10 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "period_label",
+        "start_date",
+        "end_date",
+        "column_break_1",
+        "status",
+        "is_default",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "description": "Human label e.g. 'May 2026 Month-End'.",
+            "fieldname": "period_label",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Period Label",
+            "reqd": 1
+        },
+        {
+            "fieldname": "start_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Start Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "end_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "End Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "Open",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Status",
+            "options": "Open\nIn Progress\nClosed",
+            "reqd": 1
+        },
+        {
+            "default": "0",
+            "description": "Default cycle for new sheets when none is selected.",
+            "fieldname": "is_default",
+            "fieldtype": "Check",
+            "label": "Is Default"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "links": [],
+    "modified": "2026-05-10 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Stock Portal",
+    "name": "VCL Stock Count Cycle",
+    "naming_rule": "Expression",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "Stock User"
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

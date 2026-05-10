@@ -1,0 +1,202 @@
+{
+    "actions": [],
+    "autoname": "format:SCS-{YYYY}-{MM}-{####}",
+    "creation": "2026-05-10 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "cycle",
+        "sheet_code",
+        "sheet_title",
+        "pattern",
+        "column_break_1",
+        "count_date",
+        "counter",
+        "reviewer",
+        "status",
+        "section_break_flags",
+        "coverage_required",
+        "coverage_satisfied",
+        "column_break_flags",
+        "direct_post_mode_snapshot",
+        "linked_stock_reconciliation",
+        "section_break_lines",
+        "lines",
+        "section_break_summary",
+        "variance_summary"
+    ],
+    "fields": [
+        {
+            "fieldname": "cycle",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Cycle",
+            "options": "VCL Stock Count Cycle",
+            "reqd": 1
+        },
+        {
+            "description": "Sheet template code, e.g. BROWN_PAPER_REELS, FUEL, FG.",
+            "fieldname": "sheet_code",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Sheet Code",
+            "reqd": 1
+        },
+        {
+            "fieldname": "sheet_title",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Sheet Title",
+            "reqd": 1
+        },
+        {
+            "fieldname": "pattern",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Pattern",
+            "options": "Single Warehouse List\nPer-Godown Ledger\nMulti-Warehouse Matrix",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "count_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Count Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "counter",
+            "fieldtype": "Link",
+            "label": "Counter",
+            "options": "User"
+        },
+        {
+            "fieldname": "reviewer",
+            "fieldtype": "Link",
+            "label": "Reviewer",
+            "options": "User"
+        },
+        {
+            "default": "Draft",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Status",
+            "options": "Draft\nCounting\nSubmitted\nUnder Review\nApproved\nPosted\nCancelled",
+            "read_only": 1,
+            "reqd": 1
+        },
+        {
+            "fieldname": "section_break_flags",
+            "fieldtype": "Section Break",
+            "label": "Coverage & Posting"
+        },
+        {
+            "default": "1",
+            "description": "When checked, every line must have counted_at set OR a skip_reason before submit.",
+            "fieldname": "coverage_required",
+            "fieldtype": "Check",
+            "label": "Coverage Required"
+        },
+        {
+            "default": "0",
+            "fieldname": "coverage_satisfied",
+            "fieldtype": "Check",
+            "label": "Coverage Satisfied",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_flags",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "0",
+            "description": "Snapshot of VCL Stock Portal Settings.direct_post_mode at time of submit. Audit only.",
+            "fieldname": "direct_post_mode_snapshot",
+            "fieldtype": "Check",
+            "label": "Direct Post Mode (snapshot)",
+            "read_only": 1
+        },
+        {
+            "description": "Stock Reconciliation document(s) created by post_count_sheet. Comma-separated when multiple warehouses.",
+            "fieldname": "linked_stock_reconciliation",
+            "fieldtype": "Small Text",
+            "label": "Linked Stock Reconciliation",
+            "read_only": 1
+        },
+        {
+            "fieldname": "section_break_lines",
+            "fieldtype": "Section Break",
+            "label": "Lines"
+        },
+        {
+            "fieldname": "lines",
+            "fieldtype": "Table",
+            "label": "Lines",
+            "options": "VCL Stock Count Line",
+            "reqd": 1
+        },
+        {
+            "fieldname": "section_break_summary",
+            "fieldtype": "Section Break",
+            "label": "Summary"
+        },
+        {
+            "fieldname": "variance_summary",
+            "fieldtype": "Small Text",
+            "label": "Variance Summary",
+            "read_only": 1
+        }
+    ],
+    "links": [],
+    "modified": "2026-05-10 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Stock Portal",
+    "name": "VCL Stock Count Sheet",
+    "naming_rule": "Expression",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "submit": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock Manager",
+            "share": 1,
+            "submit": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Stock User",
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

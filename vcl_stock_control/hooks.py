@@ -19,6 +19,22 @@ fixtures = [
     }
 ]
 
+# Web bundles for the Stock Portal entry / review pages
+# -----------------------------------------------------
+app_include_css = ["/assets/vcl_stock_control/css/portal.css"]
+web_include_css = ["/assets/vcl_stock_control/css/portal.css"]
+web_include_js = [
+    "/assets/vcl_stock_control/js/portal_sheet.js",
+    "/assets/vcl_stock_control/js/portal_review.js",
+]
+
+# Website route rules — pretty URLs for the portal
+# ------------------------------------------------
+website_route_rules = [
+    {"from_route": "/stock-portal/sheet/<name>", "to_route": "stock-portal/sheet/[name]"},
+    {"from_route": "/stock-portal/review/<name>", "to_route": "stock-portal/review/[name]"},
+]
+
 # Jinja
 # -----
 # jinja = {}

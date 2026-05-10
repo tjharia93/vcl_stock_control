@@ -1,0 +1,54 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Review &middot; {{ sheet.sheet_title }}{% endblock %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/assets/vcl_stock_control/css/portal.css">
+
+<div class="vcl-portal" data-sheet="{{ sheet.name }}">
+    <header class="vcl-header">
+        <a href="/stock-portal" class="vcl-back">&larr; Portal</a>
+        <h1>Review: {{ sheet.sheet_title }}</h1>
+        <p class="vcl-muted">
+            Sheet <strong>{{ sheet.name }}</strong> &middot;
+            Counter <strong>{{ sheet.counter or '?' }}</strong> &middot;
+            Status <span class="vcl-status vcl-status-{{ sheet.status|lower|replace(' ', '-') }}">{{ sheet.status }}</span>
+        </p>
+    </header>
+
+    <section class="vcl-card">
+        <table class="vcl-table">
+            <thead>
+                <tr><th>#</th><th>Item</th><th>Warehouse</th><th>System</th><th>Counted</th><th>Variance</th><th>Skip</th></tr>
+            </thead>
+            <tbody>
+            {% for line in sheet.lines %}
+                <tr class="{{ 'vcl-row-skipped' if line.skip_reason else '' }}">
+                    <td>{{ line.idx }}</td>
+                    <td>{{ line.item_label or line.vcl_key }}</td>
+                    <td>{{ line.warehouse or '' }}</td>
+                    <td>{{ '%.3f' % (line.system_qty or 0) }}</td>
+                    <td>{{ '%.3f' % (line.counted_qty or 0) if line.counted_at else '—' }}</td>
+                    <td class="{{ 'vcl-warn-text' if (line.variance_qty or 0) != 0 and not line.skip_reason }}">
+                        {{ '%.3f' % (line.variance_qty or 0) }}
+                    </td>
+                    <td>{{ line.skip_reason or '' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    {% if can_review %}
+        <section class="vcl-actions">
+            <button id="btn-send-back" class="vcl-btn">Send Back to Counter</button>
+            <button id="btn-approve" class="vcl-btn vcl-btn-primary">Approve</button>
+            {% if sheet.status == "Approved" %}
+                <button id="btn-post" class="vcl-btn vcl-btn-primary">Post to ERPNext</button>
+            {% endif %}
+        </section>
+    {% endif %}
+</div>
+
+<script src="/assets/vcl_stock_control/js/portal_review.js"></script>
+{% endblock %}
